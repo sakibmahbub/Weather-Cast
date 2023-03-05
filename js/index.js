@@ -4,7 +4,19 @@ const loadWeatherData = async (city) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${My_Key}&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  displayWeatherData(data);
 };
+
+const displayWeatherData = (data) => {
+  console.log();
+  const temperature = document.getElementById("temperature");
+  temperature.innerText = data.main.temp;
+};
+
+document.getElementById("btn-search").addEventListener("click", function () {
+  const searchfield = document.getElementById("search-field");
+  const city = searchfield.value;
+  loadWeatherData(city);
+});
 
 loadWeatherData("dhaka");

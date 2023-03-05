@@ -8,7 +8,6 @@ const loadWeatherData = async (city) => {
 };
 
 const displayWeatherData = (data) => {
-  console.log();
   const temperature = document.getElementById("temperature");
   temperature.innerText = data.main.temp;
 };
@@ -16,6 +15,8 @@ const displayWeatherData = (data) => {
 document.getElementById("btn-search").addEventListener("click", function () {
   const searchfield = document.getElementById("search-field");
   const city = searchfield.value;
+  document.getElementById("city").innerText = city;
+
   loadWeatherData(city);
 });
 
